@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stempel Waktu Foto & Video</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h2 class="page-title">Generator Timestamp Foto & Video</h2>
+
+  <div class="container">
+    <div class="card">
+      <div class="form-group">
+        <label for="mediaInput">1. Pilih Foto atau Video yang Sudah Jadi</label>
+        <input type="file" id="mediaInput" accept="image/*,video/*">
+      </div>
+
+      <div class="form-group">
+        <label for="inputName">2. Nama Pembuat / Petugas</label>
+        <input type="text" id="inputName" placeholder="Contoh: Budi Santoso" value="Dery Kusuma Putra">
+      </div>
+
+      <div class="form-group">
+        <label for="inputTime">3. Waktu Awal (Tanggal & Jam)</label>
+        <input type="datetime-local" id="inputTime" step="1">
+      </div>
+
+      <div class="form-group">
+        <label for="inputCoords">4. Titik Koordinat</label>
+        <input type="text" id="inputCoords" placeholder="-6.397631, 107.448753">
+        <button type="button" id="btnGps" class="btn-gps">Ambil Lokasi & Koordinat Otomatis (GPS)</button>
+      </div>
+
+      <div class="form-group">
+        <label for="inputLocation">5. Nama Lokasi / Alamat</label>
+        <input type="text" id="inputLocation" placeholder="Contoh: Jl. Ahmad Yani, Cikampek, Karawang">
+      </div>
+
+      <!-- TAMBAHAN BARU: Pengatur Ukuran Tulisan -->
+      <div class="form-group">
+        <label for="inputFontSize">6. Ukuran Tulisan: <span id="fontSizeLabel">100%</span></label>
+        <input type="range" id="inputFontSize" min="50" max="250" value="100" step="5">
+      </div>
+
+      <button type="button" id="btnProcess" class="btn-process">Proses & Unduh Hasil</button>
+      <div id="statusText" class="status"></div>
+    </div>
+
+    <div class="card">
+      <label class="preview-label">Pratinjau Hasil (Live Preview)</label>
+      <canvas id="previewCanvas" width="640" height="360"></canvas>
+      <p class="note">
+        *Catatan: Untuk video, sistem akan memutar video dari awal hingga akhir untuk merekam stempel waktu yang berjalan, lalu mengunduhnya otomatis.
+      </p>
+    </div>
+  </div>
+
+  <video id="hiddenVideo" playsinline muted preload="auto"></video>
+
+  <script src="script.js"></script>
+</body>
+</html>
